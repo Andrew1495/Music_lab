@@ -22,7 +22,19 @@ album_2 = Album("One by One", "Rock", artist_2)
 album_repository.save(album_2)
 
 # result = artist_repository.select_by_id(1)
-# print(result.__dict__)
+
+result = album_repository.select_by_id(1)
+print(result.__dict__)
+
+all_artist = artist_repository.select_all()
+
+all_albums = album_repository.select_all()
+
+for artist in all_artist:
+    print(artist.__dict__)
+
+for album in all_albums:
+    print(album.__dict__)
 
 
 

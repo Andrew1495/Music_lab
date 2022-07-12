@@ -24,4 +24,16 @@ def select_by_id(id):
         result = results[0]
         artist = Artist(result['name'], result['id'])
     return artist
-    
+
+
+def select_all():
+
+    artists = []
+
+    sql = "SELECT * FROM artists"
+    results = run_sql(sql)
+
+    for row in results:
+        artist = Artist(row["name"], row["id"])
+        artists.append(artist)
+    return artists
