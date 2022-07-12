@@ -10,3 +10,18 @@ def save(artist):
     artist.id = id
     return artist
 
+def delete_all():
+    sql = "DELETE FROM artists"
+    run_sql(sql)
+
+def select_by_id(id):
+    artist = None
+    sql = "SELECT * FROM artists WHERE id = %s"
+    values = [id]
+    results = run_sql(sql, values)
+
+    if results:
+        result = results[0]
+        artist = Artist(result['name'], result['id'])
+    return artist
+    

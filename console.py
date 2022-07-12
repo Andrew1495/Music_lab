@@ -4,6 +4,9 @@ from models.album import Album
 import repositories.artist_repository as artist_repository
 import repositories.album_repository as album_repository
 
+album_repository.delete_all()
+artist_repository.delete_all()
+
 artist_1 = Artist("Deep Purple")
 artist_repository.save(artist_1)
 
@@ -17,5 +20,11 @@ album_repository.save(album_1)
 
 album_2 = Album("One by One", "Rock", artist_2)
 album_repository.save(album_2)
+
+# result = artist_repository.select_by_id(1)
+# print(result.__dict__)
+
+
+
 
 pdb.set_trace()
