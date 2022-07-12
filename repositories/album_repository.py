@@ -43,3 +43,28 @@ def select_all():
         album = Album(row["title"], row["genre"], artist, row["id"])
         albums.append(album)
     return albums
+
+
+def select_by_artist(artist):
+    albums = []
+    sql = "SELECT * FROM albums WHERE artist_id = %s"
+    values = [artist.id]
+    results = run_sql(sql,values)
+
+    for row in results:
+        album = Album(row["title"], row["genre"], artist, row["id"])
+        albums.append(album)
+    return albums
+
+
+def update(album):
+    sql = " UPDATE albums SET (title, genre, artist_id) = (%s, %s, %s) WHERE id= %s"
+    values = [album.title, album.genre, album.artist.id, album.id]
+    run_sql(sql, values)
+
+
+def delete(id):
+    sql = "DELETE FROM albums WHERE id = %s"
+    values = [id]
+    run_sql(sql, values)
+
